@@ -1,0 +1,44 @@
+local a=game:GetService("Players")local b=game:GetService("UserInputService")local c=game:GetService("TextChatService")local d=a.LocalPlayer
+local e="https://discord.gg/bUvPT4ETcU"
+local f={Queue={},Color=Color3.fromRGB(42,204,255)}
+local function g(h,i,j)local k=Instance.new(h)for l,m in next,i do if l~="Parent" then if typeof(m)=="Instance"then m.Parent=k else k[l]=m end end end if j then local n=Instance.new("UICorner",k)n.CornerRadius=j end return k end
+local function o(h,p,q)q=q or {}local r=Instance.new("Sound")for s,t in next,q do if not table.find({"Parent","PlayOnRemove"},s)then r[s]=t end end r.SoundId="rbxassetid://"..h;r.PlayOnRemove=true;r.Parent=p;r:Destroy();r=nil end
+function f.setColor(h)f.Color=h;f.Gui.ContainerNotification.ImageColor3=h end
+function f.new(h)assert(typeof(h)=="table"and h.Text)if f.Gui.Enabled then table.insert(f.Queue,h)return end if typeof(h.Color)=="Color3"then f.setColor(h.Color)end f.Gui.ContainerNotification.Message.Text="";f.Gui.Enabled=true;o(700153902,f.Gui,{Volume=.25})local v=1 for i=1,#h.Text do f.Gui.ContainerNotification.Message.Text=f.Gui.ContainerNotification.Message.Text..string.sub(h.Text,i,i)if v==1 then o(215658476,f.Gui,{})end v=v%3+1;task.wait(.02)end task.delay(h.Duration or 1,function()f.Gui.Enabled=false;if #f.Queue>0 then local w=f.Queue[1] table.remove(f.Queue,1)f.new(w)end end)end
+f.Gui=g("ScreenGui",{Name="NotificationGui",Enabled=false,IgnoreGuiInset=true,ZIndexBehavior=Enum.ZIndexBehavior.Sibling,
+	g("ImageLabel",{Name="ContainerNotification",AnchorPoint=Vector2.new(.5,0),BackgroundTransparency=1,Position=UDim2.new(.5,0,0,0),Size=UDim2.new(0,350,0,70),Image="rbxassetid://4915091158",ImageColor3=f.Color,
+		g("TextLabel",{Name="Message",BackgroundTransparency=1,Position=UDim2.new(0,35,0,11),Size=UDim2.new(1,-70,1,-22),Font=Enum.Font.SourceSansItalic,TextColor3=Color3.fromRGB(255,255,255),TextScaled=true,TextSize=30,TextWrapped=true,
+			g("UITextSizeConstraint",{MaxTextSize=30,MinTextSize=5})}),
+		g("UIAspectRatioConstraint",{AspectRatio=5,AspectType=Enum.AspectType.ScaleWithParentSize,DominantAxis=Enum.DominantAxis.Height})}),
+	g("UIPadding",{PaddingTop=UDim.new(.1,0)}),
+})
+f.Gui.Parent=d:WaitForChild("PlayerGui")if d.Team~=nil then f.setColor(d.TeamColor.Color)end
+d:GetPropertyChangedSignal("Team"):Connect(function()if d.Team~=nil then f.setColor(d.TeamColor.Color)end end)
+local function p()if gethui then return gethui()end if syn and syn.protect_gui then return game.CoreGui end return d:WaitForChild("PlayerGui")end
+local q=p()
+local function r(s)local t=Instance.new("ScreenGui")t.ResetOnSpawn=false;t.Parent=q;if syn and syn.protect_gui then syn.protect_gui(t)end local u=Instance.new("Frame",t)u.Size=UDim2.new(0,300,0,160);u.Position=UDim2.new(.5,-150,.5,-80);u.BackgroundColor3=Color3.fromRGB(20,20,20);u.BorderSizePixel=0
+local v=Instance.new("TextLabel",u)v.Size=UDim2.new(1,-20,0,40);v.Position=UDim2.new(0,10,0,10);v.Text="Join the discord?";v.Font=Enum.Font.GothamBold;v.TextSize=20;v.TextColor3=Color3.new(1,1,1);v.BackgroundTransparency=1
+local w=Instance.new("TextButton",u)w.Size=UDim2.new(1,-40,0,35);w.Position=UDim2.new(0,20,0,60);w.Text="Sure";w.Font=Enum.Font.GothamBold;w.TextSize=18;w.TextColor3=Color3.new(1,1,1);w.BackgroundColor3=Color3.fromRGB(0,170,0);w.BorderSizePixel=0
+local x=Instance.new("TextButton",u)x.Size=UDim2.new(1,-40,0,35);x.Position=UDim2.new(0,20,0,105);x.Text="Fuck Off";x.Font=Enum.Font.GothamBold;x.TextSize=18;x.TextColor3=Color3.new(1,1,1);x.BackgroundColor3=Color3.fromRGB(170,0,0);x.BorderSizePixel=0
+local function y()t:Destroy();s()end
+w.MouseButton1Click:Connect(function()if setclipboard then setclipboard(e)elseif syn and syn.set_clipboard then syn.set_clipboard(e)end;f.new({Text="Copied to clipboard",Duration=2});y()end)
+x.MouseButton1Click:Connect(y)
+end
+r(function()
+	local A="The Arkenstone"local B="Enlighten"local C=";r15 me"local D=false;local E=false
+	local F=Instance.new("ScreenGui")F.Name="R15AutoGUI";F.ResetOnSpawn=false;F.Parent=q;if syn and syn.protect_gui then syn.protect_gui(F)end
+	local G=Instance.new("Frame",F)G.Size=UDim2.new(0,220,0,110);G.Position=UDim2.new(.5,-110,.7,0);G.BackgroundColor3=Color3.fromRGB(25,25,25);G.BorderSizePixel=0
+	local H=Instance.new("TextButton",G)H.Size=UDim2.new(1,-20,0,50);H.Position=UDim2.new(0,10,0,10);H.Text="R15 AUTO: OFF";H.Font=Enum.Font.GothamBold;H.TextSize=18;H.TextColor3=Color3.new(1,1,1);H.BackgroundColor3=Color3.fromRGB(170,0,0);H.BorderSizePixel=0
+	local I=Instance.new("TextLabel",G)I.Size=UDim2.new(1,-20,0,20);I.Position=UDim2.new(0,10,0,70);I.Text="credit: christopherafton on discord";I.Font=Enum.Font.Gotham;I.TextSize=12;I.TextColor3=Color3.fromRGB(170,170,170);I.BackgroundTransparency=1;I.TextXAlignment=Enum.TextXAlignment.Center
+	H.MouseButton1Click:Connect(function()D=not D;H.Text=D and "R15 AUTO: ON" or "R15 AUTO: OFF";H.BackgroundColor3=D and Color3.fromRGB(0,170,0) or Color3.fromRGB(170,0,0)end)
+	do local j,k,l;G.InputBegan:Connect(function(m)if m.UserInputType==Enum.UserInputType.MouseButton1 then j=true;k=m.Position;l=G.Position end end)
+	b.InputChanged:Connect(function(m)if j and m.UserInputType==Enum.UserInputType.MouseMovement then local n=m.Position-k;G.Position=UDim2.new(l.X.Scale,l.X.Offset+n.X,l.Y.Scale,l.Y.Offset+n.Y)end end)
+	b.InputEnded:Connect(function(m)if m.UserInputType==Enum.UserInputType.MouseButton1 then j=false end end)
+	end
+	local function M(N)local O=d.Character;local P=d:FindFirstChild("Backpack")if O and O:FindFirstChild(N)then return O:FindFirstChild(N)end if P and P:FindFirstChild(N)then return P:FindFirstChild(N)end end
+	local function Q()local R=M(B)if R then R.Parent=d.Backpack end end
+	local function S()local O=d.Character;local T=O and O:FindFirstChildOfClass("Humanoid");local R=M(A)if T and R then T:EquipTool(R)end end
+	local function U()local V=c.ChatInputBarConfiguration.TargetTextChannel;if V then V:SendAsync(C)end end
+	local function W(X)local T=X:WaitForChild("Humanoid");local Y=T.Health;while true do task.wait(.1)if not D then Y=T.Health;continue end if T.Health<=0 and Y>0 and not E then E=true;Q() repeat task.wait(.1)until d.Character and d.Character:FindFirstChildOfClass("Humanoid");S();U();task.wait(1);local Z=d.Character:FindFirstChildOfClass("Humanoid")if Z and Z.Health<=0 then Q();S();U()end end if E and T.Health>0 then E=false end Y=T.Health end end
+	d.CharacterAdded:Connect(W)if d.Character then W(d.Character)end
+end)
