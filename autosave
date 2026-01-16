@@ -26,11 +26,11 @@ x.MouseButton1Click:Connect(y)
 end
 r(function()
 	local A="The Arkenstone"local B="Enlighten"local C=";r15 me"local D=false;local E=false
-	local F=Instance.new("ScreenGui")F.Name="R15AutoGUI";F.ResetOnSpawn=false;F.Parent=q;if syn and syn.protect_gui then syn.protect_gui(F)end
+	local F=Instance.new("ScreenGui")F.Name="Auto Save GUI";F.ResetOnSpawn=false;F.Parent=q;if syn and syn.protect_gui then syn.protect_gui(F)end
 	local G=Instance.new("Frame",F)G.Size=UDim2.new(0,220,0,110);G.Position=UDim2.new(.5,-110,.7,0);G.BackgroundColor3=Color3.fromRGB(25,25,25);G.BorderSizePixel=0
-	local H=Instance.new("TextButton",G)H.Size=UDim2.new(1,-20,0,50);H.Position=UDim2.new(0,10,0,10);H.Text="R15 AUTO: OFF";H.Font=Enum.Font.GothamBold;H.TextSize=18;H.TextColor3=Color3.new(1,1,1);H.BackgroundColor3=Color3.fromRGB(170,0,0);H.BorderSizePixel=0
+	local H=Instance.new("TextButton",G)H.Size=UDim2.new(1,-20,0,50);H.Position=UDim2.new(0,10,0,10);H.Text="Auto Save: OFF";H.Font=Enum.Font.GothamBold;H.TextSize=18;H.TextColor3=Color3.new(1,1,1);H.BackgroundColor3=Color3.fromRGB(170,0,0);H.BorderSizePixel=0
 	local I=Instance.new("TextLabel",G)I.Size=UDim2.new(1,-20,0,20);I.Position=UDim2.new(0,10,0,70);I.Text="credit: christopherafton on discord";I.Font=Enum.Font.Gotham;I.TextSize=12;I.TextColor3=Color3.fromRGB(170,170,170);I.BackgroundTransparency=1;I.TextXAlignment=Enum.TextXAlignment.Center
-	H.MouseButton1Click:Connect(function()D=not D;H.Text=D and "R15 AUTO: ON" or "R15 AUTO: OFF";H.BackgroundColor3=D and Color3.fromRGB(0,170,0) or Color3.fromRGB(170,0,0)end)
+	H.MouseButton1Click:Connect(function()D=not D;H.Text=D and "Auto Save: ON" or "R15 AUTO: OFF";H.BackgroundColor3=D and Color3.fromRGB(0,170,0) or Color3.fromRGB(170,0,0)end)
 	do local j,k,l;G.InputBegan:Connect(function(m)if m.UserInputType==Enum.UserInputType.MouseButton1 then j=true;k=m.Position;l=G.Position end end)
 	b.InputChanged:Connect(function(m)if j and m.UserInputType==Enum.UserInputType.MouseMovement then local n=m.Position-k;G.Position=UDim2.new(l.X.Scale,l.X.Offset+n.X,l.Y.Scale,l.Y.Offset+n.Y)end end)
 	b.InputEnded:Connect(function(m)if m.UserInputType==Enum.UserInputType.MouseButton1 then j=false end end)
